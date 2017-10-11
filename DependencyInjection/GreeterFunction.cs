@@ -1,7 +1,7 @@
-using System.Net.Http;
-using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace DependencyInjection
 {
@@ -10,7 +10,7 @@ namespace DependencyInjection
         [FunctionName("Greeter")]
         public static async Task<HttpResponseMessage> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get")]HttpRequestMessage req,
-            [Inject(typeof(IGreeter))]IGreeter greeter)
+            [Inject]IGreeter greeter)
         {
             return req.CreateResponse(greeter.Greet());
         }
