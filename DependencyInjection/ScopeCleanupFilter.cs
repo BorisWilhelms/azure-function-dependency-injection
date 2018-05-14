@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DependencyInjection
 {
-    public class ScopeCleanupFilter : IFunctionInvocationFilter, IFunctionExceptionFilter
+    internal class ScopeCleanupFilter : IFunctionInvocationFilter, IFunctionExceptionFilter
     {
         public Task OnExceptionAsync(FunctionExceptionContext exceptionContext, CancellationToken cancellationToken)
         {

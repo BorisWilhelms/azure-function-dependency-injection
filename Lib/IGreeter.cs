@@ -1,4 +1,4 @@
-﻿namespace DependencyInjection
+﻿namespace Lib
 {
     public interface IGreeter
     {

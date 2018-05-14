@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace DependencyInjection
 {
-
-    public class InjectBinding : IBinding
+    internal class InjectBinding : IBinding
     {
         private readonly Type _type;
         private readonly IServiceProvider _serviceProvider;
 
-        public InjectBinding(IServiceProvider serviceProvider, Type type)
+        internal InjectBinding(IServiceProvider serviceProvider, Type type)
         {
             _type = type;
             _serviceProvider = serviceProvider;
