@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace DependencyInjection
+namespace Willezone.Azure.WebJobs.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Defines the interface of builder that creates instances of an <see cref="IServiceProvider"/>.
+    /// Defines the interface of builder that creates an instance of an <see cref="IServiceProvider"/>.
     /// </summary>
     public interface IServiceProviderBuilder
     {
@@ -11,6 +11,6 @@ namespace DependencyInjection
         /// Creates an instance of an <see cref="IServiceProvider"/>.
         /// </summary>
         /// <returns></returns>
-        IServiceProvider BuildServiceProvider();
+        IServiceProvider Build();
     }
 }

@@ -1,20 +1,19 @@
 ﻿using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.Azure.WebJobs.Host.Protocols;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
 
-namespace DependencyInjection
+namespace Willezone.Azure.WebJobs.Extensions.DependencyInjection
 {
     internal class InjectBinding : IBinding
     {
         private readonly Type _type;
-        private readonly IServiceProvider _serviceProvider;
+        private readonly ServiceProviderHolder _serviceProviderHolder;
 
-        internal InjectBinding(IServiceProvider serviceProvider, Type type)
+        internal InjectBinding(ServiceProviderHolder serviceProviderHolder, Type type)
         {
             _type = type;
-            _serviceProvider = serviceProvider;
+            _serviceProviderHolder = serviceProviderHolder;
         }
 
         public bool FromAttribute => true;
@@ -22,12 +21,10 @@ namespace DependencyInjection
         public Task<IValueProvider> BindAsync(object value, ValueBindingContext context) =>
             Task.FromResult((IValueProvider)new InjectValueProvider(value));
 
-        public async Task<IValueProvider> BindAsync(BindingContext context)
+        public Task<IValueProvider> BindAsync(BindingContext context)
         {
-            await Task.Yield();
-            var scope = InjectBindingProvider.Scopes.GetOrAdd(context.FunctionInstanceId, (_) => _serviceProvider.CreateScope());
-            var value = scope.ServiceProvider.GetRequiredService(_type);
-            return await BindAsync(value, context.ValueContext);
+            var value = _serviceProviderHolder.GetRequiredService(context.FunctionInstanceId, _type);
+            return BindAsync(value, context.ValueContext);
         }
 
         public ParameterDescriptor ToParameterDescriptor() => new ParameterDescriptor();

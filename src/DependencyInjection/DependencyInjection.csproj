@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Willezone.Azure.WebJobs.Extensions.DependencyInjection</RootNamespace>
+    <AssemblyName>Willezone.Azure.WebJobs.Extensions.DependencyInjection</AssemblyName>
+    <Authors>Boris Wilhelms</Authors>
+    <Company>Boris Wilhelms</Company>
+    <Description>This package contains binding extensions for dependency injection.</Description>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Azure WebJobs AzureFunctions DependencyInjection</PackageTags>
+    <RepositoryUrl>https://github.com/BorisWilhelms/azure-function-dependency-injection</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/BorisWilhelms/azure-function-dependency-injection</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/BorisWilhelms/azure-function-dependency-injection/blob/master/LICENSE</PackageLicenseUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
+  </ItemGroup>
+</Project>
