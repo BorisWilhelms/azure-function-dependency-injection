@@ -2,7 +2,7 @@
 This repo contains binding extensions for dependency injection in Azure Function v2. Out of the box  `Microsoft.Extensions.DependencyInjection` is used for dependency injection, but it is possible to use any IoC container that implements the `IServiceProvider` interface (for example Autofac).
 
 ## How to configure
-The dependency injection bindings are available as a nuget package. Once the package is added to function project, a `WebJobsStartup` is needed to register and configure the dependency injection bindings.
+The dependency injection bindings are available as a [nuget package](https://www.nuget.org/packages/Willezone.Azure.WebJobs.Extensions.DependencyInjection). Once the package is added to function project, a `WebJobsStartup` is needed to register and configure the dependency injection bindings.
 
 This is an example `WebJobsStartup` class
 
