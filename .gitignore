@@ -263,3 +263,4 @@ paket-files/
 __pycache__/
 *.pyc
 /.vscode
+/src/ExampleFunction/Properties/PublishProfiles
