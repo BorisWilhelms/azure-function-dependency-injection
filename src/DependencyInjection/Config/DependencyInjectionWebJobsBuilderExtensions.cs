@@ -1,5 +1,7 @@
 ﻿using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 
 namespace Willezone.Azure.WebJobs.Extensions.DependencyInjection
@@ -57,7 +59,7 @@ namespace Willezone.Azure.WebJobs.Extensions.DependencyInjection
             });
 
             builder.Services.AddSingleton<InjectBindingProvider>();
-            builder.Services.AddSingleton<ScopeCleanupFilter>();
+            builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<IFunctionFilter, ScopeCleanupFilter>());
             builder.AddExtension<InjectConfiguration>();
         }
     }
