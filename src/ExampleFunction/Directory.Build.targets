@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <_IsFunctionsSdkBuild Condition="$(_FunctionsTaskFramework) != ''">true</_IsFunctionsSdkBuild>
+    <_FunctionsExtensionsDir>$(TargetDir)</_FunctionsExtensionsDir>
+    <_FunctionsExtensionsDir Condition="$(_IsFunctionsSdkBuild) == 'true'">$(_FunctionsExtensionsDir)bin</_FunctionsExtensionsDir>
+  </PropertyGroup>
+
+  <Target Name="CopyExtensionsJson" AfterTargets="_GenerateFunctionsAndCopyContentFiles">
+    <Message Importance="High" Text="Overwritting extensions.json file with one from build." />
+
+    <Copy Condition="$(_IsFunctionsSdkBuild) == 'true' AND Exists('$(_FunctionsExtensionsDir)\extensions.json')"
+          SourceFiles="$(_FunctionsExtensionsDir)\extensions.json"
+          DestinationFiles="$(PublishDir)bin\extensions.json"
+          OverwriteReadOnlyFiles="true"
+          ContinueOnError="true"/>
+  </Target>
+</Project>

@@ -1,4 +1,12 @@
 # Dependency Injection Extensions for Azure Functions v2
+
+- [Dependency Injection Extensions for Azure Functions v2](#dependency-injection-extensions-for-azure-functions-v2)
+    - [About](#about)
+    - [How to configure](#how-to-configure)
+    - [Using the extension](#using-the-extension)
+    - [Azure Deployment](#azure-deployment)
+
+## About
 This repo contains binding extensions for dependency injection in Azure Function v2. Out of the box  `Microsoft.Extensions.DependencyInjection` is used for dependency injection, but it is possible to use any IoC container that implements the `IServiceProvider` interface (for example Autofac).
 
 ## How to configure
@@ -91,3 +99,6 @@ public static IActionResult Run(
     return new OkObjectResult(result);
 }
 ```
+
+## Azure Deployment
+Currently there is an issue when publishing your function application that the required `extensions.json` is not created correctly. The issue is discussed [here](https://github.com/Azure/azure-functions-host/issues/3386#issuecomment-419565714). Luckily there is a workaround for this: Just copy the [Directory.Build.targets](tools/Directory.Build.targets) file into your Azure Functions project, this will then create the correct `extensions.json` file.
