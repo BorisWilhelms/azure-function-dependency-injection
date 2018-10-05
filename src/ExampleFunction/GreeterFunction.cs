@@ -1,3 +1,4 @@
+using ExampleFunction.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -32,6 +33,15 @@ namespace ExampleFunction
                 $"Singleton: {singletonGreeter2.Greet()}"
             });
             return new OkObjectResult(result);
+        }
+
+        [FunctionName("LoggingGreeter")]
+        public static IActionResult RunLoggingGreeter(
+            [HttpTrigger(AuthorizationLevel.Function, "get")]HttpRequest req,
+            [Inject]LoggingGreeter greeter)
+        {
+            greeter.Greet();
+            return new OkResult();
         }
     }
 }
