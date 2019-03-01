@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <Target Name="CopyExtensionsJson" AfterTargets="_GenerateFunctionsAndCopyContentFiles">
-    <Message Importance="High" Text="Overwritting extensions.json file with one from build." />
+    <Message Importance="High" Text="Overwriting extensions.json file with one from build." />
 
     <Copy Condition="$(_IsFunctionsSdkBuild) == 'true' AND Exists('$(_FunctionsExtensionsDir)\extensions.json')"
           SourceFiles="$(_FunctionsExtensionsDir)\extensions.json"
